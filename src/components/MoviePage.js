@@ -59,48 +59,46 @@ export default function MoviePage() {
 
   return (
     <>
-      <Suspense>
-        <SearchForm value={search} />
+      <SearchForm value={search} />
 
-        {movies.length > 0 ? (
-          <>
-            {loading && <Loading>Loading...</Loading>}
-            <ul className="movie__list">
-              {movies.map((movie) => (
-                <li key={movie.id} className="movie__item item">
-                  <Link href={`/movie/${movie.id}`}>
-                    <PictureWrap
-                      className="media-box"
-                      isImage={!!movie.poster_path}
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={movie.title}
-                    />
-                    <h3 className="item__h">{movie.title}</h3>
-                    <p className="item__desc">{movie.overview}</p>
-                    <p className="item__date">
-                      <strong>Release Date : </strong> {movie.release_date}
-                    </p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            {hasMore && (
-              <ButtonGroup align="center">
-                <Button onClick={() => setPage((prevPage) => prevPage + 1)}>
-                  Read More
-                </Button>
-              </ButtonGroup>
-            )}
-          </>
-        ) : (
-          <>
-            <NoData>No movies found.</NoData>
+      {movies.length > 0 ? (
+        <>
+          {loading && <Loading>Loading...</Loading>}
+          <ul className="movie__list">
+            {movies.map((movie) => (
+              <li key={movie.id} className="movie__item item">
+                <Link href={`/movie/${movie.id}`}>
+                  <PictureWrap
+                    className="media-box"
+                    isImage={!!movie.poster_path}
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                  <h3 className="item__h">{movie.title}</h3>
+                  <p className="item__desc">{movie.overview}</p>
+                  <p className="item__date">
+                    <strong>Release Date : </strong> {movie.release_date}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {hasMore && (
             <ButtonGroup align="center">
-              <Button onClick={goBack}>Back</Button>
+              <Button onClick={() => setPage((prevPage) => prevPage + 1)}>
+                Read More
+              </Button>
             </ButtonGroup>
-          </>
-        )}
-      </Suspense>
+          )}
+        </>
+      ) : (
+        <>
+          <NoData>No movies found.</NoData>
+          <ButtonGroup align="center">
+            <Button onClick={goBack}>Back</Button>
+          </ButtonGroup>
+        </>
+      )}
     </>
   );
 }
