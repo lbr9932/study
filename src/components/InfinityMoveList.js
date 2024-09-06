@@ -30,6 +30,7 @@ export default function InfinityMoveList({}) {
               <Link href={`/movie/${movie.id}`} key={movie.id} className="item">
                 <PictureWrap
                   className="media-box"
+                  immediate={true}
                   isImage={!!movie.poster_path}
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
