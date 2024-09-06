@@ -1,22 +1,27 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { PictureWrap } from "./Picture";
 import { Button } from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function CastList({ cast = [], title }) {
-  if (cast.length === 0) return null;
-
   const [maxLen, setMaxLen] = useState(7);
   const [isOpen, setIsOpen] = useState(false);
 
-  const open = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
-
   useEffect(() => {
-    setMaxLen(isOpen ? cast.length - 1 : 7);
+    if (isOpen) {
+      setMaxLen(cast.length - 1);
+    } else {
+      setMaxLen(7);
+    }
   }, [isOpen, cast.length]);
+
+  // 조건문으로 렌더링 제어
+  if (cast.length === 0) return;
+
+  function open() {
+    setIsOpen((prev) => !prev);
+  }
 
   return (
     <div className={`cast${isOpen ? " is-open" : ""}`}>

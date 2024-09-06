@@ -21,7 +21,7 @@ export default function Header() {
         className: "is-sticky",
       },
     });
-  }, []);
+  }, [headerRef]);
 
   return (
     <header className="header" ref={headerRef}>

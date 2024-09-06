@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import { detailMovie, getCredits, getVideo } from "@/lib/tmdbApi";
 import { Loading } from "./Loading";
 import { Button, ButtonGroup } from "./Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Hero from "./Hero";
 import CastList from "./CastList";
 
@@ -20,9 +18,11 @@ export default function MovieDetailsPage({ id }) {
   const [directing, setDirecting] = useState("");
   const [videos, setVideos] = useState(null);
 
-  const goBack = () => {
-    router.back();
-  };
+  useEffect(() => {
+    if (id) {
+      fetchMovieDetails(id);
+    }
+  }, [id]);
 
   async function fetchMovieDetails(id) {
     setLoading(true);
@@ -47,13 +47,9 @@ export default function MovieDetailsPage({ id }) {
     }
   }
 
-  console.log(videos?.results);
-
-  useEffect(() => {
-    if (id) {
-      fetchMovieDetails(id);
-    }
-  }, [id]);
+  const goBack = () => {
+    router.back();
+  };
 
   if (loading) return <Loading>Loading...</Loading>;
   if (error)

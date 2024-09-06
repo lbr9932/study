@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body>
+      <body suppressHydrationWarning>
         <div className="gr" role="presentation"></div>
         <Header />
         <main className="main">{children}</main>

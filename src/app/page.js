@@ -1,15 +1,10 @@
-"use client";
 import "../styles/pages/home.scss";
-import SearchForm from "@/components/SearchForm";
-import InfinityMoveList from "@/components/InfinityMoveList";
+import MainPage from "@/components/MainPage";
 
 export default function Home() {
   return (
     <>
-      <div className="wrap">
-        <InfinityMoveList />
-        <SearchForm />
-      </div>
+      <MainPage />
     </>
   );
 }
