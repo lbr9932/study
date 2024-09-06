@@ -1,7 +1,7 @@
 "use client"; // 클라이언트 측 코드임을 명시
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { searchMovies } from "@/lib/tmdbApi";
 import { Loading } from "@/components/Loading";
@@ -59,46 +59,48 @@ export default function MoviePage() {
 
   return (
     <>
-      <SearchForm value={search} />
+      <Suspense>
+        <SearchForm value={search} />
 
-      {movies.length > 0 ? (
-        <>
-          {loading && <Loading>Loading...</Loading>}
-          <ul className="movie__list">
-            {movies.map((movie) => (
-              <li key={movie.id} className="movie__item item">
-                <Link href={`/movie/${movie.id}`}>
-                  <PictureWrap
-                    className="media-box"
-                    isImage={!!movie.poster_path}
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                  <h3 className="item__h">{movie.title}</h3>
-                  <p className="item__desc">{movie.overview}</p>
-                  <p className="item__date">
-                    <strong>Release Date : </strong> {movie.release_date}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          {hasMore && (
+        {movies.length > 0 ? (
+          <>
+            {loading && <Loading>Loading...</Loading>}
+            <ul className="movie__list">
+              {movies.map((movie) => (
+                <li key={movie.id} className="movie__item item">
+                  <Link href={`/movie/${movie.id}`}>
+                    <PictureWrap
+                      className="media-box"
+                      isImage={!!movie.poster_path}
+                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                    <h3 className="item__h">{movie.title}</h3>
+                    <p className="item__desc">{movie.overview}</p>
+                    <p className="item__date">
+                      <strong>Release Date : </strong> {movie.release_date}
+                    </p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {hasMore && (
+              <ButtonGroup align="center">
+                <Button onClick={() => setPage((prevPage) => prevPage + 1)}>
+                  Read More
+                </Button>
+              </ButtonGroup>
+            )}
+          </>
+        ) : (
+          <>
+            <NoData>No movies found.</NoData>
             <ButtonGroup align="center">
-              <Button onClick={() => setPage((prevPage) => prevPage + 1)}>
-                Read More
-              </Button>
+              <Button onClick={goBack}>Back</Button>
             </ButtonGroup>
-          )}
-        </>
-      ) : (
-        <>
-          <NoData>No movies found.</NoData>
-          <ButtonGroup align="center">
-            <Button onClick={goBack}>Back</Button>
-          </ButtonGroup>
-        </>
-      )}
+          </>
+        )}
+      </Suspense>
     </>
   );
 }
