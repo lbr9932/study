@@ -1,0 +1,85 @@
+@use "util/fonts";
+@use "util/color";
+@use "util/variable";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100%;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--white);
+  background-color: var(--gray-dark);
+  font-family: "Pretendard", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+select,
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.gr {
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    filter: blur(300px);
+    border-radius: 100%;
+    z-index: -1;
+    opacity: 0.2;
+  }
+  &::before {
+    top: -400px;
+    left: -400px;
+    background-color: var(--primary-lighten-10);
+    opacity: 0.1;
+  }
+  &::after {
+    bottom: -300px;
+    right: -300px;
+    background-color: var(--primary-darken-10);
+  }
+}
+
+.main {
+  display: grid;
+  min-height: calc(100svh - 160px);
+  padding-bottom: 80px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+}

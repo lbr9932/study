@@ -1,0 +1,51 @@
+@use "../util" as *;
+
+.main {
+  align-content: center;
+}
+
+.infinity {
+  --width: 200px;
+  --imageQuantity: 10;
+
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  overflow: hidden;
+
+  &__pad {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: var(--spacing-24);
+    width: calc(var(--width) * var(--imageQuantity) * 2);
+    animation: autoScroll 60s linear infinite;
+  }
+
+  .item {
+    position: relative;
+    display: block;
+    width: var(--width);
+    overflow: hidden;
+    border-radius: var(--spacing-4);
+    transition: opacity 0.5s;
+
+    @include hover {
+      opacity: 0.6;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+@keyframes autoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(var(--width) * var(--imageQuantity)));
+  }
+}

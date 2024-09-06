@@ -1,0 +1,66 @@
+@use "../util" as *;
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: var(--spacing-16) var(--spacing-32);
+  border: none;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+  @include hover {
+    background-color: var(--primary-lighten-10);
+  }
+
+  svg {
+    margin-inline: var(--spacing-8);
+  }
+}
+
+.btn--sm {
+  padding: var(--spacing-8) var(--spacing-16);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.btn--gray {
+  background-color: var(--gray);
+
+  @include hover {
+    background-color: var(--primary);
+  }
+}
+.btn--ghost {
+  padding: 0;
+  background-color: transparent;
+
+  @include hover {
+    background-color: transparent;
+  }
+}
+
+.btn-group {
+  & {
+    display: flex;
+    align-items: center;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+
+  &--left {
+    justify-content: flex-end;
+  }
+
+  &--space-between {
+    justify-content: space-between;
+  }
+}

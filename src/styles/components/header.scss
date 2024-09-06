@@ -1,0 +1,75 @@
+// -----------------------------------------------------------------------------
+// header
+// -----------------------------------------------------------------------------
+
+@use "../util" as *;
+
+.header {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: var(--z-index);
+  display: flex;
+  align-items: center;
+  height: 100px;
+  padding-inline: var(--spacing-48);
+  transition: backdrop-filter 0.3s;
+
+  &.is-sticky {
+    backdrop-filter: blur(8px);
+  }
+}
+
+.logo {
+  & {
+    position: absolute;
+    left: var(--spacing-48);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+
+  em {
+    font: inherit;
+    font-size: 100%;
+    color: var(--primary);
+  }
+}
+
+.gnb {
+  display: flex;
+  margin-left: auto;
+  gap: var(--spacing-32);
+}
+
+.d {
+  &1 {
+    & {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-24);
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    a {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      opacity: 0.6;
+      transition: opacity 0.3s;
+
+      @include hover {
+        opacity: 1;
+      }
+    }
+  }
+}

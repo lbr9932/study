@@ -1,0 +1,72 @@
+// -----------------------------------------------------------------------------
+// Color
+// -----------------------------------------------------------------------------
+
+// Primary Palette
+$primary: #a4262c;
+$secondary: #fdc000;
+
+$success: #28a745;
+$warning: #ffc107;
+$danger: #dc3545;
+
+// Grayscale Palette
+$white: #ffffff;
+$black: #000000;
+$gray-dark: #0d1019;
+$gray: #6c757d;
+$gray-light: #dddddd;
+
+// Extended Palette
+$info: #17a2b8;
+$light: #e9ecef;
+$dark: #0d1019;
+
+// Lighten and darken
+$primary-lighten-10: lighten($primary, 10%);
+$primary-lighten-20: lighten($primary, 20%);
+$primary-darken-10: darken($primary, 10%);
+$primary-darken-20: darken($primary, 20%);
+
+// Opacity (alpha)
+$primary-opacity-90: rgba($primary, 0.9);
+$primary-opacity-70: rgba($primary, 0.7);
+$primary-opacity-50: rgba($primary, 0.5);
+$primary-opacity-30: rgba($primary, 0.3);
+$primary-opacity-10: rgba($primary, 0.1);
+
+:root {
+  /* Primary Palette */
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+
+  /* Status Colors */
+  --success: #{$success};
+  --warning: #{$warning};
+  --danger: #{$danger};
+
+  /* Grayscale Palette */
+  --white: #{$white};
+  --black: #{$black};
+  --gray-dark: #{$gray-dark};
+  --gray: #{$gray};
+  --gray-light: #{$gray-light};
+
+  /* Extended Palette */
+  --info: #{$info};
+  --light: #{$light};
+  --dark: #{$dark};
+
+  /* Lighten and Darken */
+  --primary-lighten-10: #{$primary-lighten-10};
+  --primary-lighten-20: #{$primary-lighten-20};
+  --primary-darken-10: #{$primary-darken-10};
+  --primary-darken-20: #{$primary-darken-20};
+
+  /* Opacity (alpha) */
+  --primary-opacity-90: #{$primary-opacity-90};
+  --primary-opacity-70: #{$primary-opacity-70};
+  --primary-opacity-50: #{$primary-opacity-50};
+  --primary-opacity-30: #{$primary-opacity-30};
+  --primary-opacity-10: #{$primary-opacity-10};
+}
