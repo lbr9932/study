@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/components/hero.scss";
+import "@/styles/components/hero.scss";
 import { PictureWrap } from "./Picture";
 import VideoLayer from "./VideoLayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

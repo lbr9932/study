@@ -1,7 +1,9 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Button } from "../components/Button";
-import "../styles/components/search-form.scss";
+import { Button } from "@/app/components/Button";
+import "@/styles/components/search-form.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";

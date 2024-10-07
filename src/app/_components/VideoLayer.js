@@ -1,4 +1,4 @@
-import "../styles/components/videpLayer.scss";
+import "@/styles/components/videpLayer.scss";
 import React, { useEffect, useRef } from "react";
 
 export default function VideoLayer({ videoId, isOpen, onClose }) {

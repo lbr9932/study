@@ -1,17 +1,16 @@
 "use client"; // 클라이언트 측 코드임을 명시
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { searchMovies } from "@/lib/tmdbApi";
-import { Loading } from "@/components/Loading";
-import { PictureWrap } from "@/components/Picture";
-import NoData from "@/components/Empty";
-import Link from "next/link";
-import { Button, ButtonGroup } from "@/components/Button";
-import SearchForm from "./SearchForm";
+import { searchMovies } from "@/api/tmdbApi";
+import { Loading } from "@/app/components/Loading";
+import NoData from "@/app/components/Empty";
+import SearchForm from "@/app/components/SearchForm";
+import MovieList from "@/app/movie/_components/MovieList";
+import { Button, ButtonGroup } from "@/app/components/Button";
 
-export default function MoviePage() {
+export default function Page() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
@@ -24,6 +23,12 @@ export default function MoviePage() {
 
   const goBack = () => {
     router.back(); // 이전 페이지로 돌아갑니다.
+
+    // 스크롤 위치 복원 (router.back() 후 실행)
+    const scrollY = sessionStorage.getItem("scrollPosition");
+    if (scrollY) {
+      window.scrollTo(0, Number(scrollY));
+    }
   };
 
   async function fetchMovies(query, page = 1) {
@@ -54,35 +59,20 @@ export default function MoviePage() {
     }
   }, [search, page]); // 페이지나 검색 매개변수가 변경될 때마다 실행
 
-  if (loading && search && page === 1) return <Loading>Loading...</Loading>;
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
+
   if (error && search) return <p>Error: {error}</p>;
 
   return (
-    <>
+    <div className="wrap">
       <SearchForm value={search} />
 
       {movies.length > 0 ? (
         <>
           {loading && <Loading>Loading...</Loading>}
-          <ul className="movie__list">
-            {movies.map((movie) => (
-              <li key={movie.id} className="movie__item item">
-                <Link href={`/movie/${movie.id}`}>
-                  <PictureWrap
-                    className="media-box"
-                    isImage={!!movie.poster_path}
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                  <h3 className="item__h">{movie.title}</h3>
-                  <p className="item__desc">{movie.overview}</p>
-                  <p className="item__date">
-                    <strong>Release Date : </strong> {movie.release_date}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <MovieList movies={movies} />
           {hasMore && (
             <ButtonGroup align="center">
               <Button onClick={() => setPage((prevPage) => prevPage + 1)}>
@@ -99,6 +89,6 @@ export default function MoviePage() {
           </ButtonGroup>
         </>
       )}
-    </>
+    </div>
   );
 }

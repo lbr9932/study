@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { PictureWrap } from "./Picture";
-import { Button } from "./Button";
+import { PictureWrap } from "../../components/Picture";
+import { Button } from "../../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 

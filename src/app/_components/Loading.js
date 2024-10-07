@@ -1,4 +1,4 @@
-import "../styles/components/loading.scss";
+import "@/styles/components/loading.scss";
 
 export function Loading({ children }) {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import "../styles/components/header.scss";
+import "@/styles/components/header.scss";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
