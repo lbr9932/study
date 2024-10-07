@@ -1,6 +1,6 @@
 import "@/styles/globals.scss";
-import Header from "@/app/components/Header"; // 헤더 컴포넌트 import
-import Footer from "@/app/components/Footer"; // 풋터 컴포넌트 import
+import Header from "@/app/_components/Header"; // 헤더 컴포넌트 import
+import Footer from "@/app/_components/Footer"; // 풋터 컴포넌트 import
 
 export const metadata = {
   title: "Movie Time",

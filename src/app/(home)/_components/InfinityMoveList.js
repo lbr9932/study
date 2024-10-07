@@ -3,7 +3,7 @@
 import { getPopular } from "@/api/tmdbApi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { PictureWrap } from "@/app/components/Picture";
+import { PictureWrap } from "@/app/_components/Picture";
 
 export default function InfinityMoveList({}) {
   const [movies, setMovies] = useState([]);

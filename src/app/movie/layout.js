@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Loading } from "@/app/components/Loading";
+import { Loading } from "@/app/_components/Loading";
 
 import "@/styles/pages/movie.scss";
 

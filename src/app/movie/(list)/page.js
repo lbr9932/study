@@ -4,11 +4,11 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { searchMovies } from "@/api/tmdbApi";
-import { Loading } from "@/app/components/Loading";
-import NoData from "@/app/components/Empty";
-import SearchForm from "@/app/components/SearchForm";
+import { Loading } from "@/app/_components/Loading";
+import NoData from "@/app/_components/Empty";
+import SearchForm from "@/app/_components/SearchForm";
 import MovieList from "@/app/movie/_components/MovieList";
-import { Button, ButtonGroup } from "@/app/components/Button";
+import { Button, ButtonGroup } from "@/app/_components/Button";
 
 export default function Page() {
   const router = useRouter();

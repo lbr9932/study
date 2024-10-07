@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PictureWrap } from "@/app/components/Picture";
+import { PictureWrap } from "@/app/_components/Picture";
 
 export default function MovieList({ movies }) {
   return (

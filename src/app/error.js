@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/app/components/Button";
+import { Button } from "@/app/_components/Button";
 
 export default function ErrorPage({ error, reset }) {
   return (

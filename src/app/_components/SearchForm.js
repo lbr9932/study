@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Button } from "@/app/components/Button";
+import { Button } from "@/app/_components/Button";
 import "@/styles/components/search-form.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
