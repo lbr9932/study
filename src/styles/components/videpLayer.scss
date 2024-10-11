@@ -30,10 +30,6 @@
     backdrop-filter: blur(10px);
   }
 
-  &:not(.is-active) {
-    display: none;
-  }
-
   &__bg {
     position: relative;
     width: 100%;

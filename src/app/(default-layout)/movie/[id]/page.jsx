@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { detailMovie, getCredits, getVideo } from "@/api/tmdbApi";
 import { Button, ButtonGroup } from "@/app/_components/Button";
 import Hero from "@/app/_components/Hero";
-import CastList from "@/app/movie/_components/CastList";
+import CastList from "./CastList";
 
 export default function Page({ params }) {
   const id = params.id;

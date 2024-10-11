@@ -60,6 +60,9 @@
 
 .video-open {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   right: 0;
   bottom: var(--spacing-48);
   width: 48px;

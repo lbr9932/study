@@ -1,6 +1,6 @@
 import "@/styles/components/loading.scss";
 
-export function Loading({ children }) {
+export function CLoading({ children }) {
   return (
     <div className="loading">
       <p className="loading__text">{children}</p>

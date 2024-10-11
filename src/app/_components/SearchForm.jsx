@@ -24,6 +24,7 @@ export default function SearchForm({ value = "" }) {
       <div className="search-form">
         <input
           type="text"
+          name="search"
           className="search-form__input"
           value={query}
           onChange={(e) => setQuery(e.target.value)}

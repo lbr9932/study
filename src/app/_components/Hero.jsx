@@ -1,13 +1,10 @@
-import { useState } from "react";
 import "@/styles/components/hero.scss";
 import { PictureWrap } from "./Picture";
-import VideoLayer from "./VideoLayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export default function Hero({ isImage, ytVideo, src, title }) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <>
       <header className="hero">
@@ -22,24 +19,12 @@ export default function Hero({ isImage, ytVideo, src, title }) {
         <div className="wrap hero__text">
           <h1 className="hero__h">{title}</h1>
           {ytVideo && (
-            <button
-              type="button"
-              className="video-open"
-              onClick={() => setIsOpen(true)}
-            >
+            <Link href={`/modal/${ytVideo}`} className="video-open">
               <FontAwesomeIcon size={32} icon={faPlay} />
-            </button>
+            </Link>
           )}
         </div>
       </header>
-
-      {ytVideo && (
-        <VideoLayer
-          videoId={ytVideo}
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-        />
-      )}
     </>
   );
 }

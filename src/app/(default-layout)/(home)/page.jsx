@@ -1,6 +1,6 @@
 import "@/styles/pages/home.scss";
 import SearchForm from "@/app/_components/SearchForm";
-import InfinityMoveList from "@/app/(home)/_components/InfinityMoveList";
+import InfinityMoveList from "./InfinityMoveList";
 
 export default function Home() {
   return (
